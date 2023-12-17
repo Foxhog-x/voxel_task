@@ -1,0 +1,18 @@
+ 
+ 
+
+import  Cards  from './components/Cards'
+import { Homepage } from './pages/Homepage'
+
+function App() {
+ 
+
+  return (
+    <>
+      <Homepage />
+ 
+    </>
+  )
+}
+
+export default App
