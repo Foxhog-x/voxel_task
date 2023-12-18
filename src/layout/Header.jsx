@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
- 
 
-export const Header = () => {
+export const Header = ({ setSearch }) => {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -32,14 +31,16 @@ export const Header = () => {
                   Something else here
                 </NavDropdown.Item>
               </NavDropdown>
-            
             </Nav>
             <Form className="d-flex">
               <Form.Control
                 type="search"
-                placeholder="Search"
+                placeholder="Search Company Name"
                 className="me-2"
                 aria-label="Search"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
               />
               <Button variant="outline-success">Search</Button>
             </Form>
