@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
-
+import Button from "react-bootstrap/Button";
 import "../App.css";
-function Cards({ cardData }) {
+function Cards({ cardData, handleModalData }) {
   return (
     <div className="card_local">
       <Card>
@@ -26,7 +26,9 @@ function Cards({ cardData }) {
           </Card.Text>
         </Card.Body>
         <Card.Body>
-          <Card.Link href="#">Card Link</Card.Link>
+          <Button onClick={() => handleModalData(cardData)}>
+            View Details
+          </Button>
         </Card.Body>
       </Card>
     </div>
