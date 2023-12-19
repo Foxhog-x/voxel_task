@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import ViewDetailModal from "../components/ViewDetailsModal";
-
+import "../App.css";
 export const Homepage = ({ search }) => {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);

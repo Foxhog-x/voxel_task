@@ -12,17 +12,8 @@ function Cards({ cardData, handleModalData }) {
           <br></br>
           <Card.Text>
             <p>Year: {cardData.Date.split("/")[2]}</p>
-            <br></br>
-            <p> City: {cardData.CityLocation}</p>
-            <br></br>
-            <p>
-              Funding:{" "}
-              {cardData.AmountInUSD ? (
-                <>${cardData.AmountInUSD}</>
-              ) : (
-                "No Record "
-              )}
-            </p>
+            City:{cardData.CityLocation}&nbsp; Funding:{" "}
+            {cardData.AmountInUSD ? <>${cardData.AmountInUSD}</> : "No Record "}
           </Card.Text>
         </Card.Body>
         <Card.Body>

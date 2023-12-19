@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../App.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -20,13 +20,24 @@ function ViewDetailModal({ show, setShow, selectedCard }) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{selectedCard.StartupName}</Modal.Title>
+          <div className="modal_title">
+            <Modal.Title>
+              <h1>{selectedCard.StartupName}</h1>
+              <h5>Year:{selectedCard.Date}</h5>
+            </Modal.Title>
+          </div>
         </Modal.Header>
+
         <Modal.Body>
-          <p>Year: {selectedCard.Date}</p>
-          <p>Investors Name: {selectedCard.InvestorsName}</p>
+          <p></p>
+          <p>
+            Investors Name: <strong>{selectedCard.InvestorsName + ","}</strong>
+          </p>
           <br></br>
-          <p> City: {selectedCard.CityLocation}</p>
+          <p>
+            {" "}
+            City: <strong>{selectedCard.CityLocation}</strong>
+          </p>
           <p> Domain: {selectedCard.IndustryVertical}</p>
           <p> Sub-Domain: {selectedCard.SubVertical}</p>
           <br></br>
@@ -44,7 +55,9 @@ function ViewDetailModal({ show, setShow, selectedCard }) {
             <p>
               Investment-Type:{" "}
               {selectedCard.InvestmentType ? (
-                <>{selectedCard.InvestmentType} </>
+                <>
+                  <strong>{selectedCard.InvestmentType}</strong>{" "}
+                </>
               ) : (
                 "No Record"
               )}
