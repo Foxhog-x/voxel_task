@@ -13,7 +13,7 @@ export const Header = ({ setSearch }) => {
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container fluid>
             <Navbar.Brand href="#">
-              <h1>Indian Startups</h1>
+              <h1 className="nav_heading">Indian Startups</h1>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
@@ -24,16 +24,6 @@ export const Header = ({ setSearch }) => {
               >
                 {/* <Nav.Link href="#action1">Home</Nav.Link> */}
                 {/* <Nav.Link href="#action2">Link</Nav.Link> */}
-                <NavDropdown title="Link" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown>
               </Nav>
               <Form className="d-flex">
                 <Form.Control
@@ -46,7 +36,9 @@ export const Header = ({ setSearch }) => {
                     setSearch(e.target.value);
                   }}
                 />
-                <Button variant="outline-success">Search</Button>
+                {/* <Button onClick={() => setSearch("")} variant="outline-danger">
+                  Clear
+                </Button> */}
               </Form>
             </Navbar.Collapse>
           </Container>

@@ -1,17 +1,19 @@
-let data = "aaaaab";
-
-const newarr = [];
-const finalArr = [];
+const word = "aaaab";
+let newarr = [];
+let finalArr = [];
 let count = 0;
-if (data === "abc") {
+let boolen = false;
+if (word === "abc") {
   count;
 } else {
-  console.log(data, "data");
-  for (let i = 0; i <= data.length - 1; i++) {
-    if (data[i] === "a" && data[i + 1] === "b") {
-      count += 1;
+  for (let i = 0; i <= word.length - 1; i++) {
+    for (let w = 1; w <= word[i].length; w++) {
+      if (word[i] === "a" && word[w] === "b") {
+        count += 3;
+      }
     }
-    switch (data[i]) {
+
+    switch (word[i]) {
       case "a":
         newarr.push({ a: "b", b: "a", c: "c" });
         break;
@@ -23,11 +25,16 @@ if (data === "abc") {
       default:
         break;
     }
+    if (!boolen) {
+      ++i;
+    }
   }
+  newarr.forEach((value) => {
+    finalArr.push(Object.values(value).join().replaceAll(",", ""));
+  });
+  newarr = [];
 }
 
-newarr.forEach((value) => {
-  finalArr.push(Object.values(value).join().replaceAll(",", ""));
-});
-console.log(finalArr);
-console.log((count += finalArr.length * 2));
+count += finalArr.length * 2;
+finalArr = [];
+console.log(count);

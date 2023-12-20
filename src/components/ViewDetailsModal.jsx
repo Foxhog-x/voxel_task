@@ -23,7 +23,7 @@ function ViewDetailModal({ show, setShow, selectedCard }) {
           <div className="modal_title">
             <Modal.Title>
               <h1>{selectedCard.StartupName}</h1>
-              <h5>Year:{selectedCard.Date}</h5>
+              <h5>Date : &nbsp;{selectedCard.Date}</h5>
             </Modal.Title>
           </div>
         </Modal.Header>
@@ -31,29 +31,29 @@ function ViewDetailModal({ show, setShow, selectedCard }) {
         <Modal.Body>
           <p></p>
           <p>
-            Investors Name: <strong>{selectedCard.InvestorsName + ","}</strong>
+            Investors Name :&nbsp;{" "}
+            <strong>{selectedCard.InvestorsName + ","}</strong>
           </p>
           <br></br>
           <p>
-            {" "}
-            City: <strong>{selectedCard.CityLocation}</strong>
+            City :&nbsp;<strong> {selectedCard.CityLocation}</strong>
           </p>
-          <p> Domain: {selectedCard.IndustryVertical}</p>
-          <p> Sub-Domain: {selectedCard.SubVertical}</p>
+          <p> Domain :&nbsp; {selectedCard.IndustryVertical}</p>
+          <p> Sub-Domain : &nbsp;{selectedCard.SubVertical}</p>
           <br></br>
           <hr></hr>
           <p>
-            Funding:{" "}
+            Funding :&nbsp;{" "}
             {selectedCard.AmountInUSD ? (
               <>
-                <strong>$</strong>
+                <strong>$&nbsp;</strong>
                 {<strong>{selectedCard.AmountInUSD}</strong>}
               </>
             ) : (
               "No Record "
             )}
             <p>
-              Investment-Type:{" "}
+              Investment-Type : &nbsp;{" "}
               {selectedCard.InvestmentType ? (
                 <>
                   <strong>{selectedCard.InvestmentType}</strong>{" "}
