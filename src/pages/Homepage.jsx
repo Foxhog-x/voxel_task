@@ -9,13 +9,23 @@ export const Homepage = ({ search }) => {
   const [selectedCard, setSelectedCard] = useState({});
   const [originalData, setOriginalData] = useState([]);
   const [ifExistInCity, setIfExistInCity] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getStartupApi = async () => {
-    const response = await fetch("http://localhost:3000/startups/");
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        "https://raw.githubusercontent.com/Foxhog-x/startupAPI/master/startup_Data.json"
+      );
 
-    var data = await response.json();
-    setData(data);
-    setOriginalData(data);
+      const resData = await response.json();
+      setData(resData);
+      setOriginalData(resData);
+    } catch (error) {
+      console.log(error, "something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
   };
   // Calling that async function
   useEffect(() => {
@@ -25,9 +35,6 @@ export const Homepage = ({ search }) => {
   const cityLoc = originalData.map((value) => {
     return value.CityLocation;
   });
-  // const cityName = cityLoc.filter(
-  //   (value, index) => cityLoc.indexOf(value) === index
-  // );
 
   const cityNames = [...new Set(cityLoc)];
 
@@ -75,19 +82,28 @@ export const Homepage = ({ search }) => {
       </div>
 
       <div className="grid_card">
-        {searchFunction().map((value, index) => {
-          return value === "nodata" ? (
-            `Startup Does not Exist in ${
-              ifExistInCity === "all" ? "Database" : ifExistInCity
-            }`
-          ) : (
-            <Cards
-              cardData={value}
-              key={index}
-              handleModalData={handleModalData}
-            />
-          );
-        })}
+        {searchFunction().map((value, index) => (
+          <>
+            {isLoading ? (
+              <div>fetching Startup Data</div>
+            ) : (
+              <>
+                {value === "nodata" ? (
+                  <div>
+                    `Startup Does not Exist in $
+                    {ifExistInCity === "all" ? "Database" : ifExistInCity}`
+                  </div>
+                ) : (
+                  <Cards
+                    cardData={value}
+                    key={index}
+                    handleModalData={handleModalData}
+                  />
+                )}
+              </>
+            )}
+          </>
+        ))}
       </div>
     </div>
   );
