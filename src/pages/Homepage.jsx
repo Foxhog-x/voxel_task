@@ -66,12 +66,7 @@ export const Homepage = ({ search }) => {
   };
 
   return (
-    <div className="main_container">
-      <ViewDetailModal
-        setShow={setShowModal}
-        show={showModal}
-        selectedCard={selectedCard}
-      />
+    <>
       <div className="select_filter">
         <select onChange={handleCityFilter}>
           <option value={"all"}>All Cities</option>
@@ -80,7 +75,11 @@ export const Homepage = ({ search }) => {
           })}
         </select>
       </div>
-
+      <ViewDetailModal
+        setShow={setShowModal}
+        show={showModal}
+        selectedCard={selectedCard}
+      />
       <div className="grid_card">
         {searchFunction().map((value, index) => (
           <>
@@ -105,6 +104,6 @@ export const Homepage = ({ search }) => {
           </>
         ))}
       </div>
-    </div>
+    </>
   );
 };
