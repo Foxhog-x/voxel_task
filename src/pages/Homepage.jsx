@@ -3,13 +3,14 @@ import Cards from "../components/Cards";
 import ViewDetailModal from "../components/ViewDetailsModal";
 import "../App.css";
 import { getOverlayDirection } from "react-bootstrap/esm/helpers";
+import Skeleton from "../components/Skeleton";
 export const Homepage = ({ search }) => {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [originalData, setOriginalData] = useState([]);
   const [ifExistInCity, setIfExistInCity] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getStartupApi = async () => {
     try {
@@ -64,7 +65,11 @@ export const Homepage = ({ search }) => {
     setSelectedCard(cardData);
     setShowModal(true);
   };
-
+  const animation = () => {
+    for (i = 0; i <= 10; i++) {
+      return <Skeleton />;
+    }
+  };
   return (
     <>
       <div className="select_filter">
@@ -84,7 +89,7 @@ export const Homepage = ({ search }) => {
         {searchFunction().map((value, index) => (
           <>
             {isLoading ? (
-              <div>fetching Startup Data</div>
+              <Skeleton />
             ) : (
               <>
                 {value === "nodata" ? (

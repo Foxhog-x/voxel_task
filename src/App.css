@@ -25,7 +25,6 @@
     display: grid;
     grid-template-columns: 1fr;
     padding: 20px 25px;
-
     gap: 30px;
   }
 }
@@ -53,3 +52,4 @@ select {
   width: 150px;
   height: 30px;
 }
+ 
