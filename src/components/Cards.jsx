@@ -2,9 +2,10 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 import Skeleton from "./Skeleton";
+import { motion } from "framer-motion";
 function Cards({ cardData, handleModalData, isLoading }) {
   return (
-    <div className="card_local">
+    <motion.div whileHover={{ scale: 0.95 }} className="card_local">
       {isLoading ? (
         <Skeleton />
       ) : (
@@ -31,7 +32,7 @@ function Cards({ cardData, handleModalData, isLoading }) {
           </Card.Body>
         </Card>
       )}
-    </div>
+    </motion.div>
   );
 }
 

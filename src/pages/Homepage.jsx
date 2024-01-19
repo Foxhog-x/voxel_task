@@ -98,11 +98,13 @@ export const Homepage = ({ search }) => {
                     {ifExistInCity === "all" ? "Database" : ifExistInCity}`
                   </div>
                 ) : (
-                  <Cards
-                    cardData={value}
-                    key={index}
-                    handleModalData={handleModalData}
-                  />
+                  <div>
+                    <Cards
+                      cardData={value}
+                      key={index}
+                      handleModalData={handleModalData}
+                    />
+                  </div>
                 )}
               </>
             )}

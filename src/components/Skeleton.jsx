@@ -132,7 +132,7 @@ function Skeleton() {
           </Card>
         </div>
       </div>
-      <div className="grid_card">
+      <div className="card_local">
         <div className="card_local">
           <Card>
             <Card.Body>
