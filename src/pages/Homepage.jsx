@@ -48,6 +48,7 @@ export const Homepage = ({ search }) => {
         return value.CityLocation === city;
       });
       setData(filterCities);
+      console.log(filterCities.length);
     }
   };
   const searchFunction = () => {
