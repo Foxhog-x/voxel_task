@@ -9,10 +9,22 @@
 
 
 }
+@media screen and (max-width: 480px){
+  .card_local {
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  
+    width: 300px;
+  
+    border-radius: 8px;
+  
+  
+  }
+}
+  
 
 .grid_card {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 35px;
   row-gap: 50px;
   margin: 5% 12%;
