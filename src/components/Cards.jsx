@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 import Skeleton from "./Skeleton";
 import { motion } from "framer-motion";
-function Cards({ cardData, handleModalData, isLoading }) {
+import { Link } from "react-router-dom";
+function Cards({ cardData, isLoading, setShowModal }) {
   return (
     <motion.div whileHover={{ scale: 0.95 }} className="card_local">
       {isLoading ? (
@@ -26,8 +28,14 @@ function Cards({ cardData, handleModalData, isLoading }) {
             </Card.Text>
           </Card.Body>
           <Card.Body>
-            <Button onClick={() => handleModalData(cardData)}>
-              View Details
+            <Button>
+              <Link
+                style={{ color: "black", textDecorationLine: "none" }}
+                to={`/info/${cardData.StartupName}`}
+                onClick={() => setShowModal(true)}
+              >
+                View Details
+              </Link>
             </Button>
           </Card.Body>
         </Card>

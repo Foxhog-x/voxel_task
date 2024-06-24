@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import Cards from "../components/Cards";
 import ViewDetailModal from "../components/ViewDetailsModal";
 import "../App.css";
-import { getOverlayDirection } from "react-bootstrap/esm/helpers";
 import Skeleton from "../components/Skeleton";
-export const Homepage = ({ search }) => {
-  const [data, setData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({});
-  const [originalData, setOriginalData] = useState([]);
+export const Homepage = ({
+  search,
+  setShowModal,
+  originalData,
+  data,
+  isLoading,
+  setData,
+}) => {
   const [ifExistInCity, setIfExistInCity] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getStartupApi = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(
-        "https://raw.githubusercontent.com/Foxhog-x/startupAPI/master/startup_Data.json"
-      );
-
-      const resData = await response.json();
-      setData(resData);
-      setOriginalData(resData);
-    } catch (error) {
-      console.log(error, "something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  // Calling that async function
-  useEffect(() => {
-    getStartupApi();
-  }, []);
 
   const cityLoc = originalData.map((value) => {
     return value.CityLocation;
@@ -45,7 +26,7 @@ export const Homepage = ({ search }) => {
     if (city === "all") {
       setData(originalData);
     } else {
-      const filterCities = originalData.filter((value, index) => {
+      const filterCities = originalData.filter((value) => {
         return value.CityLocation === city;
       });
       setData(filterCities);
@@ -62,39 +43,36 @@ export const Homepage = ({ search }) => {
 
     return filterData.length ? filterData : ["nodata"];
   };
-  const handleModalData = (cardData) => {
-    setSelectedCard(cardData);
-    setShowModal(true);
-  };
-  const animation = () => {
-    for (i = 0; i <= 10; i++) {
-      return <Skeleton />;
-    }
-  };
+
+  // const animation = () => {
+  //   for (i = 0; i <= 10; i++) {
+  //     return <Skeleton />;
+  //   }
+  // };
   return (
     <>
       <div className="select_filter">
         <select onChange={handleCityFilter}>
           <option value={"all"}>All Cities</option>
           {cityNames?.map((value, index) => {
-            return <option value={value}>{value}</option>;
+            return (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            );
           })}
         </select>
       </div>
-      <ViewDetailModal
-        setShow={setShowModal}
-        show={showModal}
-        selectedCard={selectedCard}
-      />
+      <ViewDetailModal />
       <div className="grid_card">
         {searchFunction().map((value, index) => (
           <>
             {isLoading ? (
-              <Skeleton />
+              <Skeleton key={index} />
             ) : (
               <>
                 {value === "nodata" ? (
-                  <div>
+                  <div key={index}>
                     `Startup Does not Exist in $
                     {ifExistInCity === "all" ? "Database" : ifExistInCity}`
                   </div>
@@ -103,7 +81,7 @@ export const Homepage = ({ search }) => {
                     <Cards
                       cardData={value}
                       key={index}
-                      handleModalData={handleModalData}
+                      setShowModal={setShowModal}
                     />
                   </div>
                 )}
